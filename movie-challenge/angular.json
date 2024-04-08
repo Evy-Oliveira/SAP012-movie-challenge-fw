@@ -27,7 +27,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+          
+            ]
           },
           "configurations": {
             "production": {
@@ -63,7 +65,7 @@
               "browserTarget": "movie-challenge:build:production"
             },
             "development": {
-              "browserTarget": "movie-challenge:build:development"
+              "buildTarget": "movie-challenge:build:development"
             }
           },
           "defaultConfiguration": "development"
