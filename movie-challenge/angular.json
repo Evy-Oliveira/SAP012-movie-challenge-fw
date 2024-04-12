@@ -71,7 +71,7 @@
               "browserTarget": "movie-challenge:build:production"
             },
             "development": {
-              "buildTarget": "movie-challenge:build:development"
+              "browserTarget": "movie-challenge:build:development"
             }
           },
           "defaultConfiguration": "development"

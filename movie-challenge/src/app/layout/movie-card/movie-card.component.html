@@ -1,0 +1,12 @@
+<p>movie-card works!</p>
+
+
+<section class="card" *ngIf="movie">
+  <figure class="card-contanier-img">
+    <img src="{{movie.poster_path}}" alt="" class="card-img">
+  </figure>
+  <div class="card-container-text">
+    <h5 class="card-title">{{movie.original_title}}</h5>
+    <h5 class="card-date">{{movie.release_date}}</h5>
+  </div>
+</section>
