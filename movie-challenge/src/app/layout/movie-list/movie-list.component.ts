@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Movie } from 'src/models/movie';
 
 @Component({
   selector: 'app-movie-list',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent {
+
+  @Input() movies!: Movie[];
+
 
 }
