@@ -1,5 +1,3 @@
-<section class="movie-list">
-  <app-movie-card></app-movie-card>
-  <app-movie-card></app-movie-card>
-  <app-movie-card></app-movie-card>
+<section class="movie-list" *ngIf="movies">
+     <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
 </section>
