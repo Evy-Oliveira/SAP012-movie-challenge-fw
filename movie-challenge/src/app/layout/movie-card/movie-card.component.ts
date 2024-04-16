@@ -8,7 +8,7 @@ import { Movie } from 'src/models/movie';
 })
 export class MovieCardComponent {
 
-  // @Input() movie: Movie ={} as Movie; // retorna um obejto vazio mas diz que tem ser igual a Movie
+  // @Input() movie: Movie ={} as Movie; // retorna um objeto vazio mas diz que tem ser igual a Movie
   @Input() movie!: Movie;
 
 }
