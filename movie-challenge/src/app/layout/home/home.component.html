@@ -1,3 +1,4 @@
 
 <h1>titulo</h1>
+<div *ngIf="isLoading$ | async" class="loader">Carregando...</div>
 <app-movie-list [movies]="movies"></app-movie-list>
