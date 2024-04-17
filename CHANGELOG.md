@@ -1,21 +1,20 @@
-## 1.0.0 - 2024-04-10
+## 1.1.0 - 2024-04-17
 
 ### Aprendizados da Sprint
 
-Aprendi sobre criação de componentes, trabalhar melhor em cima do a documentação oferece.
+Aprendi melhor sobre criação de componentes, rotas e navegação. Como chamar o objeto dentro do html
 
 ### Adicionado
 
-Inclusão do services
+Inclusão do home
 
 ### Alterado
-Versão 17 do angular para a versão 16
-o arquivo environments pois estava com o nome do arquivo errado, e a declaração do token não estava correta(eu segui o que estava no readme), mas Danilo me ensinou a declarar as variaveis de amnbiente da forma correta.
+com o movie-card, movie-list incluso precisei alterar o app.component.ts e o app.component.html, e o app-routing.moules.ts
 
 ### Corrigido
 
-Precisei corrigir todos a maioria dos arquivos de configuração, pois estavam com coisas da versão 17 do angular
+precisei corrigir o componente movie-card
 
 ### Removido
 
-Removi a versão 17 do angular, a pasta dist criada no build
+Não precisei remover nada
