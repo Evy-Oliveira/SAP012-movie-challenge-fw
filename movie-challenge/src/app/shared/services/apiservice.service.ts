@@ -9,7 +9,7 @@ import { formatMovie } from 'src/utils/transformers';
   providedIn: 'root'
 })
 export class APIService {
-  baseUrl ="https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-br&with_keywords=15097";
+  baseUrl ="https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-br&with_keywords=15097&without_keywords=470%2C458%2C12377%2C2150%2C168678";
   
 //const url = 'page=2&sort_by=popularity.desc&with_genres=27%7C53';
 
