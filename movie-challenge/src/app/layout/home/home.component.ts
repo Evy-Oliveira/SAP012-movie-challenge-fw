@@ -13,22 +13,38 @@ export class HomeComponent {
   @Output() movies!: Movie[];
 
   isLoading$ = this.loadingService.isLoadingObservable;
+  hasError:boolean = false;
 
   constructor(
     readonly service: APIService,
     readonly loadingService: LoadingService
   ) {
-    this.loadMovies();
+    
+    this.loadingService.startLoading();
+    // this.loadMovies();
+    setTimeout(
+      () =>  this.loadMovies(),
+      3000
+    );
   }
   loadMovies() {
-      this.loadingService.startLoading();
-      this.service.getMovies().subscribe({
-        next: (movies) => {
-          console.log(movies);
-          this.movies = movies;
-          this.loadingService.stopLoading();
-        }
-      })
+  
+this.service.getMovies().subscribe({
+  next: (movies) => {
+    this.hasError = false;
+    console.log(movies);
+    this.movies = movies;
+  },
+  error: (error) =>{
+    this.hasError = true;
+    this.loadingService.stopLoading();
+    console.error(error);
+  },
+  complete:() =>{
+    this.loadingService.stopLoading();
   }
+})
 
+  }
 }
+

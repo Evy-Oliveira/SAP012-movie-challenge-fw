@@ -1,5 +1,6 @@
+<section class="home-page">
 <header>
-  <h1>Trash Movie Challenge</h1>
+  <h1>Shark Movie Challenge</h1>
 </header>
 
 <div *ngIf="isLoading$ | async" class="loader">
@@ -10,3 +11,5 @@
   </div> -->
 </div>
 <app-movie-list [movies]="movies"></app-movie-list>
+ <div *ngIf="hasError">Errro de comunicação com Servidor, tente novamente mais tarde!</div>
+</section>
