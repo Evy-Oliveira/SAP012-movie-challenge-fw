@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Movie } from '../../../models/movie';
 import { environment } from 'src/environments/environment';
-import { formatMovie } from 'src/utils/transformers';
+import { formatMetaData, formatMovie } from 'src/utils/transformers';
+import { MetaData } from 'src/models/metaData';
+import { Filters } from 'src/models/filters';
 
 @Injectable({
   providedIn: 'root'
@@ -24,14 +26,16 @@ httpOptions = {
   constructor(
     readonly http: HttpClient
   ) { }
-  getMovies():Observable<Movie[]>{
-   return this.http.get<Movie[]>(`${this.baseUrl}&page=1&sort_by=popularity.desc&with_genres=27%7C53`,this.httpOptions).pipe(
+  
+  getMovies(filters?: Filters):Observable<MetaData>{
+    if(!filters){
+      filters = {page:1}
+    }
+   return this.http.get<MetaData>(`${this.baseUrl}&page=${filters.page}&sort_by=popularity.desc&with_genres=27%7C53`,this.httpOptions).pipe(
     map(
       (resp: any) =>{
-        let transformedMovies = resp.results.map((movie: any) => {
-          return formatMovie(movie);
-        })
-        return transformedMovies;
+        console.log(resp);
+        return formatMetaData(resp);
       }
 
     )

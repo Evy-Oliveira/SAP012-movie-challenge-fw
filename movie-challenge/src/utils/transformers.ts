@@ -1,3 +1,4 @@
+import { MetaData } from "src/models/metaData";
 import { Movie } from "../models/movie";
 
 export function formatMovie(apiMovieData: any): Movie {
@@ -12,4 +13,21 @@ export function formatMovie(apiMovieData: any): Movie {
     }
     return formatedMovie
 
+}
+
+export function formatMetaData(apiMovieResp: any): MetaData{
+    let transformedMovies = apiMovieResp.results.map((movie: any) => {
+        return formatMovie(movie);
+      })
+    
+      const formatedData: MetaData ={
+        metaData: {
+            pagination: {
+              currentPage: apiMovieResp.page,
+              totalPages: apiMovieResp.total_pages
+            }
+          },
+        movies: transformedMovies
+      }
+      return formatedData;
 }
