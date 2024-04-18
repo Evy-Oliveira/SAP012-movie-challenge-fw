@@ -30,10 +30,10 @@ export class HomeComponent {
   loadMovies() {
   
 this.service.getMovies().subscribe({
-  next: (movies) => {
+  next: (resp) => {
     this.hasError = false;
-    console.log(movies);
-    this.movies = movies;
+    console.log(resp);
+    this.movies = resp.movies;
   },
   error: (error) =>{
     this.hasError = true;
