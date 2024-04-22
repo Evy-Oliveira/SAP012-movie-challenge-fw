@@ -1,0 +1,24 @@
+<section class="buttons-pagination">
+  <button 
+  class="button-previous"
+  [disabled]="isPreviousDisabled()" 
+  (click)="selectPage(currentPage - 1)">
+  Previus
+    </button>
+  <button
+  class="button-page"
+  *ngFor="let page of totalPagesArray"
+  [class.active]="isPageActive(page)"
+  (click)="selectPage(page)">
+  {{ page }}
+    </button>
+  <button class="button-next"
+  [disabled]="isNextDisabled()"
+  (click)="selectPage(currentPage + 1)">
+  Next
+</button>
+</section>
+<section class="info-page">
+  <p class="info-current-page">Current Page: {{ currentPage }}</p>
+  <p class="info-total-pages">Total Pages: {{ totalPages }}</p>
+</section>
