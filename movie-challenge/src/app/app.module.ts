@@ -6,6 +6,7 @@ import { MovieCardComponent } from './layout/movie-card/movie-card.component';
 import { MovieListComponent } from './layout/movie-list/movie-list.component';
 import { HomeComponent } from './layout/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginationComponent } from './layout/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     MovieCardComponent,
     MovieListComponent,
     HomeComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

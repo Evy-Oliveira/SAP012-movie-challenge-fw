@@ -5,11 +5,11 @@
 
 <div *ngIf="isLoading$ | async" class="loader">
   Carregando...
-  <!-- <div style="padding-top:66.667%;position:relative;">
-    <iframe src="https://gifer.com/embed/1Apv" width="100%" height="100%" 
-    style='position:absolute;top:0;left:0;' frameBorder="0" allowFullScreen></iframe>
-  </div> -->
 </div>
 <app-movie-list [movies]="movies"></app-movie-list>
+
+<app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
+
  <div *ngIf="hasError">Errro de comunicação com Servidor, tente novamente mais tarde!</div>
+
 </section>

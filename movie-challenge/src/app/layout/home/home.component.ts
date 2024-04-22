@@ -11,6 +11,8 @@ import { Movie } from 'src/models/movie';
 export class HomeComponent {
 
   @Output() movies!: Movie[];
+  currentPage: number = 0;
+  totalPages: number = 0;
 
   isLoading$ = this.loadingService.isLoadingObservable;
   hasError:boolean = false;
@@ -27,13 +29,18 @@ export class HomeComponent {
       3000
     );
   }
-  loadMovies() {
+  loadMovies(filters?:{page:number}) {
+    if(!filters){
+      filters = {page:1}
+    }
   
-this.service.getMovies().subscribe({
+this.service.getMovies(filters).subscribe({
   next: (resp) => {
     this.hasError = false;
     console.log(resp);
     this.movies = resp.movies;
+    this.currentPage = resp.metaData.pagination.currentPage;
+    this.totalPages = resp.metaData.pagination.totalPages;
   },
   error: (error) =>{
     this.hasError = true;
@@ -45,6 +52,11 @@ this.service.getMovies().subscribe({
   }
 })
 
+  }
+
+  onSelectPage(event: number){
+    console.log(event);
+    this.loadMovies({page:event})
   }
 }
 
