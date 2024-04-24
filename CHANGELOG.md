@@ -1,20 +1,20 @@
-## 1.1.0 - 2024-04-17
+## 1.1.0 - 2024-04-14
 
 ### Aprendizados da Sprint
 
-Aprendi melhor sobre criação de componentes, rotas e navegação. Como chamar o objeto dentro do html
+Aprendi sobre paginação, class.active, queryParams, uso do set timeOut
 
 ### Adicionado
 
-Inclusão do home
+Inclusão do pagination e queryParams
 
 ### Alterado
-com o movie-card, movie-list incluso precisei alterar o app.component.ts e o app.component.html, e o app-routing.moules.ts
+alteração no component home para receber a paginação
 
 ### Corrigido
 
-precisei corrigir o componente movie-card
+correção dos botoes previous e next para ficarem desabilitados quando recarrega a pagina e é a 1 ou 6
 
 ### Removido
 
-Não precisei remover nada
+Comentarios e codigos que não estavam sendo utilizados
