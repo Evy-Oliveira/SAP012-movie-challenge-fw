@@ -11,7 +11,7 @@ import { Filters } from 'src/models/filters';
   providedIn: 'root'
 })
 export class APIService {
-  baseUrl ="https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-br&with_keywords=15097&without_keywords=470%2C458%2C12377%2C2150%2C168678";
+  baseUrl ="https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-br&with_keywords=15097&without_keywords=470%2C458%2C12377%2C2150%2C168678%2C2804%2C5350%2C3358%2C209522";
   
 //const url = 'page=2&sort_by=popularity.desc&with_genres=27%7C53';
 
