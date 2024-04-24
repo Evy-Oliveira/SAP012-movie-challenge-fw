@@ -8,8 +8,8 @@
 </div>
 <app-movie-list [movies]="movies"></app-movie-list>
 
-<app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
+<app-pagination *ngIf="movieLoaded" [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
 
- <div *ngIf="hasError">Errro de comunicação com Servidor, tente novamente mais tarde!</div>
+<div *ngIf="hasError">Erro de comunicação com Servidor, tente novamente mais tarde!</div>
 
 </section>
