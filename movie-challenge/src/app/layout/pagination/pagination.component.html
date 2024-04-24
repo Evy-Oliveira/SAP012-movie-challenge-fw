@@ -7,7 +7,7 @@
     </button>
   <button
   class="button-page"
-  *ngFor="let page of totalPagesArray; trackBy:trackByFn"
+  *ngFor="let page of totalPagesArray"
   [class.active]="isPageActive(page)"
   (click)="selectPage(page)">
   {{ page }}
