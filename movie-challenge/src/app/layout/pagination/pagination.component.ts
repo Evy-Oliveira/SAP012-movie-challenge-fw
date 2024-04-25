@@ -16,7 +16,8 @@ export class PaginationComponent implements OnInit{
   totalPagesArray: number[] = [];
 
   ngOnInit(): void {
-    // this.updateTotalPagesArray();
+    this.currentPage = Number(this.currentPage);
+    this.updateTotalPagesArray();
   }
   ngOnChanges(): void{
     this.updateTotalPagesArray();
@@ -25,7 +26,9 @@ export class PaginationComponent implements OnInit{
     this.totalPagesArray = Array.from({length:this.totalPages}, (_, index) => index + 1)
   }
   selectPage(page: number){
-    this.onSelectPage.emit(page)
+    if(page >= 1 && page <= this.totalPages){
+      this.onSelectPage.emit(page);
+    } 
   }
   isPageActive(page:number): boolean{
     return this.currentPage === page;
@@ -36,7 +39,5 @@ export class PaginationComponent implements OnInit{
   isNextDisabled(): boolean{
     return this.currentPage >= this.totalPages;
   }
-  trackByFn(index: number, item: number){
-    return index;
-  }
+ 
 }
