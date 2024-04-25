@@ -29,15 +29,12 @@ private readonly HTTP_OPTIONS = {
     private readonly http: HttpClient
   ) { }
   
-  getMovies(filters?: Filters):Observable<MetaData>{
-    if(!filters){
-      filters = {page:1}
-    }
+  getMovies(filters: Filters, genreMap: Map<number, string>):Observable<MetaData>{
    return this.http.get<MetaData>(`${this.BASE_URL+this.MOVIES}&page=${filters.page}&sort_by=popularity.desc&with_genres=27%7C53%7C16`,this.HTTP_OPTIONS).pipe(
     map(
       (resp: any) =>{
-        console.log(resp);
-        return formatMetaData(resp);
+        // console.log(resp);
+        return formatMetaData(resp, genreMap);
       }
 
     )

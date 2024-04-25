@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { APIService } from 'src/app/shared/services/apiservice.service';
 import { LoadingService } from 'src/app/shared/services/loading-service.service';
 import { Movie } from 'src/models/movie';
+import { formatGenresToMap } from 'src/utils/transformers';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   qParams:Params = this.aRoute.snapshot.queryParams;
   hasError:boolean = false;
   movieLoaded: boolean = false;
+  genres: Map<number, string> = new Map<number, string>();
 
   constructor(
     private readonly service: APIService,
@@ -25,21 +27,17 @@ export class HomeComponent implements OnInit {
     private readonly aRoute: ActivatedRoute,
     private readonly router: Router
   ) {
-  
     this.loadingService.startLoading();
-    setTimeout(() =>  {
-      this.loadMovies();
-      this.loadGenres();
-    },3000);
+    this.loadGenres();
   }
   ngOnInit(): void {
-    this.onSelectPage(this.qParams['page'] ?? 1);
-    console.log(this.currentPage);
-    console.log(this.aRoute.snapshot.queryParams);
+    setTimeout(() =>  {
+      this.onSelectPage(this.qParams['page'] ?? 1);
+    },2000);
   }
   loadMovies() {
    this.movieLoaded = false;
-   this.service.getMovies({page:this.currentPage}).subscribe({
+   this.service.getMovies({page:this.currentPage},this.genres).subscribe({
   next: (resp) => {
     this.movieLoaded = true;
     this.hasError = false;
@@ -70,7 +68,7 @@ export class HomeComponent implements OnInit {
   loadGenres(){
     this.service.getMoviesGenres().subscribe({
       next:(resp) =>{
-        console.log(resp);
+        this.genres = formatGenresToMap(resp);
       },
       error:(error) => {
         console.error(error);
