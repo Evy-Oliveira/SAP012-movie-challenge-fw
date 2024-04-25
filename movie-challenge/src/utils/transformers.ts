@@ -1,5 +1,7 @@
 import { MetaData } from "src/models/metaData";
 import { Movie } from "../models/movie";
+import { Genre } from "src/models/genres";
+import { map } from "rxjs";
 
 export function formatMovie(apiMovieData: any): Movie {
     const url = "https://image.tmdb.org/t/p/w500"; // url da base API TMDB para imagens.
@@ -12,7 +14,6 @@ export function formatMovie(apiMovieData: any): Movie {
         poster_path: `${url}${apiMovieData.poster_path}`,
     }
     return formatedMovie
-
 }
 
 export function formatMetaData(apiMovieResp: any): MetaData{
@@ -30,4 +31,12 @@ export function formatMetaData(apiMovieResp: any): MetaData{
         movies: transformedMovies
       }
       return formatedData;
+}
+export function formatGenresToMap(genresData: Genre[]): Map<number, string>{
+  let genreMap = new Map<number, string>();
+  if(genresData.length > 0)
+  genresData.map(genre =>{
+    genreMap.set(genre.id, genre.name);
+  })
+  return genreMap;
 }
