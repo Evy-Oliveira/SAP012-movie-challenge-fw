@@ -20,13 +20,17 @@ export class HomeComponent implements OnInit {
   movieLoaded: boolean = false;
 
   constructor(
-    readonly service: APIService,
-    readonly loadingService: LoadingService,
-    readonly aRoute: ActivatedRoute,
-    readonly router: Router
+    private readonly service: APIService,
+    private readonly loadingService: LoadingService,
+    private readonly aRoute: ActivatedRoute,
+    private readonly router: Router
   ) {
+  
     this.loadingService.startLoading();
-    setTimeout(() =>  this.loadMovies(),3000);
+    setTimeout(() =>  {
+      this.loadMovies();
+      this.loadGenres();
+    },3000);
   }
   ngOnInit(): void {
     this.onSelectPage(this.qParams['page'] ?? 1);
@@ -57,11 +61,22 @@ export class HomeComponent implements OnInit {
   complete:() =>{
     this.loadingService.stopLoading();
   }
-})
+});
   }
   onSelectPage(event: number){
     this.currentPage = event;
     this.loadMovies();
   }
+  loadGenres(){
+    this.service.getMoviesGenres().subscribe({
+      next:(resp) =>{
+        console.log(resp);
+      },
+      error:(error) => {
+        console.error(error);
+      },
+    })
+  };
+
 }
 
