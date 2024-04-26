@@ -10,6 +10,6 @@
 
 <app-pagination *ngIf="movieLoaded" [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
 
-<div *ngIf="hasError">Erro de comunicação com Servidor, tente novamente mais tarde!</div>
+<div *ngIf="hasError" class="error">Erro de comunicação com Servidor, tente novamente mais tarde!</div>
 
 </section>
