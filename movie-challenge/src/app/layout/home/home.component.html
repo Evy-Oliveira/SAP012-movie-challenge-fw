@@ -3,13 +3,17 @@
   <h1>Shark Movie Challenge</h1>
 </header>
 
-<div *ngIf="isLoading$ | async" class="loader">
+<div *ngIf="hasError" class="error">Erro de comunicação com Servidor, tente novamente mais tarde!</div>
+
+<div *ngIf="!hasError && (isLoading$ | async)" class="loader">
   Carregando...
 </div>
+
+<div *ngIf="!hasError && movieLoaded">
+
 <app-movie-list [movies]="movies"></app-movie-list>
+<app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
 
-<app-pagination *ngIf="movieLoaded" [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
-
-<div *ngIf="hasError" class="error">Erro de comunicação com Servidor, tente novamente mais tarde!</div>
+</div>
 
 </section>
