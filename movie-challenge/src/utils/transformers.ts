@@ -1,6 +1,7 @@
 import { MetaData } from "src/models/metaData";
 import { Movie } from "../models/movie";
 import { Genre } from "src/models/genres";
+import { last } from "rxjs";
 
 export function formatMovie(apiMovieData: any, genreMap: Map<number, string>): Movie {
     const url = "https://image.tmdb.org/t/p/w500"; // url da base API TMDB para imagens.
@@ -15,7 +16,6 @@ export function formatMovie(apiMovieData: any, genreMap: Map<number, string>): M
         genres: [],
     }
     apiMovieData.genre_ids.map((genre_id: number)=>{
-      // console.log(genre_id);
       formatedMovie.genres.push(String(genreMap.get(genre_id)));
      })
     return formatedMovie;
@@ -45,4 +45,9 @@ export function formatGenresToMap(genresData: Genre[]): Map<number, string>{
   })
   // console.log(genreMap);
   return genreMap;
+}
+export function formatGenresToOptions(genres: Genre[]){
+  return genres.map(genre =>{
+    return{value: genre.id, label: genre.name}
+  });
 }
