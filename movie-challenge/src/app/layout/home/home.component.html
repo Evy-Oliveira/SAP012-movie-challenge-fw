@@ -9,8 +9,9 @@
   Carregando...
 </div>
 
-<div *ngIf="!hasError && movieLoaded">
+<div *ngIf="!hasError && movieLoaded" class="home-container">
 
+<app-list-options [options]="options" (onChange)="onSelectGenre($event)" (onClear)="onGenreClear()"></app-list-options>
 <app-movie-list [movies]="movies"></app-movie-list>
 <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
 

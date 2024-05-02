@@ -7,6 +7,7 @@ import { MovieListComponent } from './layout/movie-list/movie-list.component';
 import { HomeComponent } from './layout/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './layout/pagination/pagination.component';
+import { ListOptionsComponent } from './layout/list-options/list-options.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PaginationComponent } from './layout/pagination/pagination.component';
     MovieListComponent,
     HomeComponent,
     PaginationComponent,
+    ListOptionsComponent,
   ],
   imports: [
     BrowserModule,

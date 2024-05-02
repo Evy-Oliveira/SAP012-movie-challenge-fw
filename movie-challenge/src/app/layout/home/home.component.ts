@@ -3,7 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { APIService } from 'src/app/shared/services/apiservice.service';
 import { LoadingService } from 'src/app/shared/services/loading-service.service';
 import { Movie } from 'src/models/movie';
-import { formatGenresToMap } from 'src/utils/transformers';
+import { Option } from 'src/models/option';
+import { formatGenresToMap, formatGenresToOptions } from 'src/utils/transformers';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   hasError:boolean = false;
   movieLoaded: boolean = false;
   genres: Map<number, string> = new Map<number, string>();
+  options: Option[] = [];
 
   constructor(
     private readonly service: APIService,
@@ -69,12 +71,22 @@ export class HomeComponent implements OnInit {
     this.service.getMoviesGenres().subscribe({
       next:(resp) =>{
         this.genres = formatGenresToMap(resp);
+        this.options = formatGenresToOptions(resp);
       },
       error:(error) => {
         console.error(error);
       },
     })
   };
+ onSelectGenre(event: Option){
+  console.log(event.value);
+  if(event && event.value){
+    const genreId = event.value;
 
+  }
+ }
+ onGenreClear(){
+  this.loadMovies();
+ }
 }
 
