@@ -2,6 +2,8 @@ import { MetaData } from "src/models/metaData";
 import { Movie } from "../models/movie";
 import { Genre } from "src/models/genres";
 import { last } from "rxjs";
+import { Option } from "src/models/option";
+import { Optional } from "@angular/core";
 
 export function formatMovie(apiMovieData: any, genreMap: Map<number, string>): Movie {
     const url = "https://image.tmdb.org/t/p/w500"; // url da base API TMDB para imagens.
@@ -46,8 +48,9 @@ export function formatGenresToMap(genresData: Genre[]): Map<number, string>{
   // console.log(genreMap);
   return genreMap;
 }
-export function formatGenresToOptions(genres: Genre[]){
-  return genres.map(genre =>{
-    return{value: genre.id, label: genre.name}
+export function formatGenresToOptions(genres: Genre[]):Option[]{
+  const formatedOptions:Option[] = genres.map(genre =>{
+    return {value: String(genre.id), label: genre.name}
   });
+  return formatedOptions;
 }

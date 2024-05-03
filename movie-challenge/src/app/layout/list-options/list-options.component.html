@@ -1,0 +1,11 @@
+<section class="filter-genre">
+<label for="select-genre">Filter </label>
+<select name="genres" #selectGenre (change)="handleChange(selectGenre.value)">
+<option value="0" ></option>
+<option *ngFor="let option of options" [value]="option.value" 
+[selected]="option === selectedOption">
+{{option.label}} 
+</option>
+</select>
+<button (click)="handleClear()">Clear</button>
+</section>

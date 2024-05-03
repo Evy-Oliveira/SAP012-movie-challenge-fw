@@ -12,7 +12,7 @@ import { Genre } from 'src/models/genres';
 })
 export class APIService {
   private readonly BASE_URL ="https://api.themoviedb.org/3/";
-  private readonly MOVIES ="discover/movie?include_adult=false&include_video=false&language=pt-br&with_keywords=15097&without_keywords=470%2C458%2C12377%2C2150%2C168678%2C2804%2C5350%2C3358%2C209522%2C2509%2C154896%2c234364%2C246%2C263548%2C204905%2C169280%2C317828%2C249004";
+  private readonly MOVIES ="discover/movie?include_adult=false&include_video=false&language=en&with_keywords=15097&without_keywords=470%2C458%2C12377%2C2150%2C168678%2C2804%2C5350%2C3358%2C209522%2C2509%2C154896%2c234364%2C246%2C263548%2C204905%2C169280%2C317828%2C249004";
  private readonly GENRES = "genre/movie/list";
 
 //const url = 'page=2&sort_by=popularity.desc&with_genres=27%7C53';
