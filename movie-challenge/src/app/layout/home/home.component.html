@@ -5,16 +5,14 @@
 
 <div *ngIf="hasError" class="error">Erro de comunicação com Servidor, tente novamente mais tarde!</div>
 
-<div *ngIf="!hasError && (isLoading$ | async)" class="loader">
-  Carregando...
-</div>
+<div *ngIf="!hasError && (isLoading$ | async)" class="loader">Carregando...</div>
 
 <div *ngIf="!hasError && movieLoaded" class="home-container">
 
 <app-list-options [options]="options" (onChange)="onSelectGenre($event)" (onClear)="onGenreClear()"></app-list-options>
-<app-movie-list [movies]="movies"></app-movie-list>
+<app-movie-list [movies]="showMovies"></app-movie-list>
 <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (onSelectPage)="onSelectPage($event)"></app-pagination>
 
 </div>
-
+<footer>Desenvolvido por Evelyn Oliveira</footer>
 </section>

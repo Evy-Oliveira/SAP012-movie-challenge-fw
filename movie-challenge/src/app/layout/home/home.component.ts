@@ -13,7 +13,8 @@ import { formatGenresToMap, formatGenresToOptions } from 'src/utils/transformers
 })
 export class HomeComponent implements OnInit {
 
-  movies!: Movie[];
+  allMovies!: Movie[];
+  showMovies!: Movie[];
   currentPage: number = 0;
   totalPages: number = 0;
   isLoading$ = this.loadingService.isLoadingObservable;
@@ -44,7 +45,8 @@ export class HomeComponent implements OnInit {
     this.movieLoaded = true;
     this.hasError = false;
     console.log(resp);
-    this.movies = resp.movies;
+    this.allMovies = resp.movies;
+    this.showMovies = resp.movies;
     this.totalPages = resp.metaData.pagination.totalPages;
     this.router.navigate([],{
       queryParams:{
@@ -82,7 +84,12 @@ export class HomeComponent implements OnInit {
   console.log(event.value);
   if(event && event.value){
     const genreId = event.value;
-
+    const genreMap = new Map<number, string>();
+    genreMap.set(parseInt(genreId, 10), '');
+    this.showMovies = this.allMovies.filter(value => {
+      console.log(value.original_title + " " + value.genres)
+      return value.genres.includes(event.label);
+    })
   }
  }
  onGenreClear(){

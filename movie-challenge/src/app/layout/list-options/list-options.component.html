@@ -4,7 +4,7 @@
 <option value="0" ></option>
 <option *ngFor="let option of options" [value]="option.value" 
 [selected]="option === selectedOption">
-{{option.label}}
+{{option.label}} 
 </option>
 </select>
 <button (click)="handleClear()">Clear</button>
